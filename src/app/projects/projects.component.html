@@ -1,0 +1,9 @@
+<h2>Our Projects</h2>
+<ul class = "projects">
+    <li *ngFor ="let project of projects">
+        <a routerLink = "/project-detail/{{project.id}}">
+            <span class = "badge"> {{project.id}}</span> {{project.name}}
+        </a>
+    </li>
+</ul>
+<!-- <app-project-detail [project] = "selectedProject"></app-project-detail> -->

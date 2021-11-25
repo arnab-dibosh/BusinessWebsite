@@ -1,0 +1,8 @@
+<h2>Highlighted Interns</h2>
+<div class = "heroes-menu">
+    <a *ngFor = "let hero of heroes" routerLink = '/detail/{{hero.id}}'>{{hero.name}}</a>
+</div>
+<h2>Highlighted Projects</h2>
+<div class = "heroes-menu">
+    <a *ngFor = "let project of projects" routerLink = '/project-detail/{{project.id}}'>{{project.name}}</a>
+</div>
