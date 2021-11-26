@@ -7,7 +7,7 @@ import { ProjectsComponent } from './projects/projects.component';
 import { ProjectDetailComponent } from './project-detail/project-detail.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
+  { path: '', redirectTo: '/heroes', pathMatch: 'full'},
   { path: 'heroes', component: HeroesComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'detail/:id', component: HeroDetailComponent},

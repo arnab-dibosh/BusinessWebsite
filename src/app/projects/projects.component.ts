@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Project } from '../project';
 import { ProjectService } from '../project.service';
 import { MessageService } from '../message.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-projects',
@@ -14,7 +15,7 @@ export class ProjectsComponent implements OnInit {
 
   projects: Project[] = [];
 
-  constructor(private projectService: ProjectService, private messageService: MessageService) { }
+  constructor(private projectService: ProjectService, private messageService: MessageService, private location: Location) { }
 
   ngOnInit(): void {
     this.getProjects();
@@ -27,5 +28,7 @@ export class ProjectsComponent implements OnInit {
   getProjects(): void{
     this.projectService.getProjects().subscribe((projects: Project[]) => this.projects = projects); 
   }
-
+  goBack(): void {
+    this.location.back();
+  }
 }

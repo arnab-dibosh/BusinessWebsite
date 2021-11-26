@@ -49,3 +49,7 @@
 input {
     padding: .5rem;
 }
+
+button {
+    margin-left: 0.5rem;
+}

@@ -1,9 +1,13 @@
 <h2>Our Projects</h2>
 <ul class = "projects">
     <li *ngFor ="let project of projects">
+        <input type = "checkbox">
         <a routerLink = "/project-detail/{{project.id}}">
             <span class = "badge"> {{project.id}}</span> {{project.name}}
         </a>
     </li>
 </ul>
+<button>Save</button>
+<button (click)="goBack()">Go Back</button>
+
 <!-- <app-project-detail [project] = "selectedProject"></app-project-detail> -->
