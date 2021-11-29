@@ -36,13 +36,32 @@ export class ProjectsComponent implements OnInit {
   save(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     let index = HEROES.findIndex(x => x.id === id);
-    HEROES[index].projectList.push('Angular');
+    for(let i=0; i<this.projects.length; ++i) {
+      let project_name = this.projects[i].name;
+      let selected = this.projects[i].is_selected;
+      let exist = this.exists(project_name, index);
+      if(selected && exist===false) {
+        HEROES[index].projectList.push(project_name);
+      }
+    this.projects[i].is_selected = false;
+    }
+    this.goBack();
   }
-  buttonVisible(): void {
+  exists(project_name: string, index: number): boolean {
+    for(let i=0;i<HEROES[index].projectList.length; ++i)
+    {
+      if(project_name === HEROES[index].projectList[i]) 
+        return true;
+    }
+    return false;
+  }
+  buttonVisible() {
     let isButtonVisible = false;
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    if(id != null){
+    if(id > 0){
        isButtonVisible = true;
+       return true;
     }
+    return false;
   }
 }
