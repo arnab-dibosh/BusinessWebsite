@@ -36,9 +36,7 @@ export class ProjectsComponent implements OnInit {
   save(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     let index = HEROES.findIndex(x => x.id === id);
-
-    for(let i=0; i<this.projects.length; ++i)
-    {
+    for(let i=0; i<this.projects.length; ++i) {
       let project_name = this.projects[i].name;
       let selected = this.projects[i].is_selected;
       let exist = this.exists(project_name, index);
@@ -67,5 +65,15 @@ export class ProjectsComponent implements OnInit {
   onCheck(): void 
   {
     console.log(this.projects);
+  }
+
+  buttonVisible() {
+    let isButtonVisible = false;
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    if(id > 0){
+       isButtonVisible = true;
+       return true;
+    }
+    return false;
   }
 }
