@@ -41,14 +41,27 @@ export class ProjectsComponent implements OnInit {
     {
       let project_name = this.projects[i].name;
       let selected = this.projects[i].is_selected;
+      let exist = this.exists(project_name, index);
 
-      if(selected)
+
+      if(selected && exist===false)
       {
         HEROES[index].projectList.push(project_name);
       }
-      
+      this.projects[i].is_selected = false;
     }
+
+    this.goBack();
     
+  }
+
+  exists(project_name: string, index: number): boolean
+  {
+    for(let i=0;i<HEROES[index].projectList.length; ++i)
+    {
+      if(project_name === HEROES[index].projectList[i]) return true;
+    }
+    return false;
   }
 
   onCheck(): void 
