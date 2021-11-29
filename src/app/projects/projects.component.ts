@@ -3,6 +3,8 @@ import { Project } from '../project';
 import { ProjectService } from '../project.service';
 import { MessageService } from '../message.service';
 import { Location } from '@angular/common';
+import { HEROES } from '../mock-heroes';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-projects',
@@ -15,7 +17,7 @@ export class ProjectsComponent implements OnInit {
 
   projects: Project[] = [];
 
-  constructor(private projectService: ProjectService, private messageService: MessageService, private location: Location) { }
+  constructor(private route: ActivatedRoute, private projectService: ProjectService, private messageService: MessageService, private location: Location) { }
 
   ngOnInit(): void {
     this.getProjects();
@@ -32,7 +34,9 @@ export class ProjectsComponent implements OnInit {
     this.location.back();
   }
   save(): void {
-    
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    let index = HEROES.findIndex(x => x.id === id);
+    HEROES[index].projectList.push('Angular');
   }
 
   onCheck(): void 
