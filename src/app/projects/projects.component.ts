@@ -34,4 +34,9 @@ export class ProjectsComponent implements OnInit {
   save(): void {
     
   }
+
+  onCheck(): void 
+  {
+    console.log(this.getProjects());
+  }
 }
