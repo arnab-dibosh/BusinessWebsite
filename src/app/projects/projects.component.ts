@@ -31,4 +31,7 @@ export class ProjectsComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
+  save(): void {
+    
+  }
 }

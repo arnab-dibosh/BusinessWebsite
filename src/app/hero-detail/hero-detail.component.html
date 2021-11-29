@@ -3,8 +3,9 @@
     <div class = "details"><span>Intern Id: </span>{{hero.id}}</div>
     <div class = "details"><span>Intern Name: </span>{{hero.name}}</div>
     <div class = "details"><span>Assigned Projects: </span>{{hero.projectList}}</div>
+    <div><button routerLink = "/projects/{{hero.id}}">Assign Project</button></div>
 </div>
 
-<div><a routerLink = '/projects'><button>Assign Project</button></a></div>
+
 <div><button>Delete</button></div>
 <div><button (click)="goBack()">Go Back</button></div>
