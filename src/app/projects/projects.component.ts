@@ -36,11 +36,23 @@ export class ProjectsComponent implements OnInit {
   save(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     let index = HEROES.findIndex(x => x.id === id);
-    HEROES[index].projectList.push('Angular');
+
+    for(let i=0; i<this.projects.length; ++i)
+    {
+      let project_name = this.projects[i].name;
+      let selected = this.projects[i].is_selected;
+
+      if(selected)
+      {
+        HEROES[index].projectList.push(project_name);
+      }
+      
+    }
+    
   }
 
   onCheck(): void 
   {
-    console.log(this.getProjects());
+    console.log(this.projects);
   }
 }
