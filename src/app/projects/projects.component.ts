@@ -38,4 +38,11 @@ export class ProjectsComponent implements OnInit {
     let index = HEROES.findIndex(x => x.id === id);
     HEROES[index].projectList.push('Angular');
   }
+  buttonVisible(): void {
+    let isButtonVisible = false;
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    if(id != null){
+       isButtonVisible = true;
+    }
+  }
 }
