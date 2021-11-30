@@ -60,12 +60,7 @@ export class ProjectsComponent implements OnInit {
       if(project_name === HEROES[index].projectList[i]) return true;
     }
     return false;
-  }
-
-  onCheck(): void 
-  {
-    console.log(this.projects);
-  }
+  } 
 
   buttonVisible() {
     let isButtonVisible = false;
