@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { InternsService } from './interns.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,10 @@ import { Title } from '@angular/platform-browser';
 export class AppComponent {
   title = 'Intern Management';
 
-  constructor(private titleService:Title){
+  constructor(private titleService:Title, private user: InternsService ){
     this.titleService.setTitle("Intern Management");
+    this.user.getData().subscribe((data: any) => {
+      console.warn(data)
+    })
   }
 }
