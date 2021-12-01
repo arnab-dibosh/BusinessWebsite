@@ -4,6 +4,7 @@ import { Observable, of } from "rxjs";
 import { Hero } from './hero';
 import { Project } from './project';
 import { Intern_Project} from './intern_project';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,8 @@ export class ApiServiceService
     let data = this.http.get(url);
     return data;
   }
+
+
   getIntern(id: number): Observable<Hero>{
     const url = `${this.internUrl}/${id}`;
     return this.http.get<Hero>(url);
@@ -41,6 +44,8 @@ export class ApiServiceService
   assignProject(i_id: number, p_id: number) : Observable<Intern_Project>
   {
     const url = `${this.internProjectUrl}`;
+
+    console.log(url);
     let httpOptions = 
     {
       headers : new HttpHeaders({'Content-Type': 'application/json'})

@@ -61,7 +61,9 @@ export class ProjectsComponent implements OnInit {
 
   save(): void
   {
-    this.projectsData = this.apiService.getProjects();
+    this.apiService.getProjects().subscribe ( 
+      ( data: any) => { this.projectsData = data; }
+    );
     const i_id = Number(this.route.snapshot.paramMap.get('id')); 
     let p_id = 10;
 
@@ -70,7 +72,8 @@ export class ProjectsComponent implements OnInit {
       if(this.projectsData[i].is_selected)
       {
         p_id = this.projectsData[i].id;
-        this.apiService.assignProject(i_id, p_id);
+        console.log(p_id);
+        this.apiService.assignProject(i_id, p_id).subscribe();
       }
     }
     this.goBack();
