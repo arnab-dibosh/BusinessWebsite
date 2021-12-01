@@ -38,7 +38,7 @@ export class ApiServiceService
     return this.http.get<Project>(url);
   }
 
-  assignProject(i_id: number, p_id: number)
+  assignProject(i_id: number, p_id: number) : Observable<Intern_Project>
   {
     const url = `${this.internProjectUrl}`;
     let httpOptions = 
@@ -46,7 +46,7 @@ export class ApiServiceService
       headers : new HttpHeaders({'Content-Type': 'application/json'})
     };
 
-    this.http.post(url, { intern_id : i_id, project_id: p_id } as Intern_Project , httpOptions);
+    return this.http.post<Intern_Project>(url, { intern_id : i_id, project_id: p_id } as Intern_Project , httpOptions);
   }
 
 }
