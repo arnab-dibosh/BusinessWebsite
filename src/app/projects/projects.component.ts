@@ -5,6 +5,7 @@ import { MessageService } from '../message.service';
 import { Location } from '@angular/common';
 import { HEROES } from '../mock-heroes';
 import { ActivatedRoute } from '@angular/router';
+import { ApiServiceService } from '../api-service.service';
 
 @Component({
   selector: 'app-projects',
@@ -17,10 +18,15 @@ export class ProjectsComponent implements OnInit {
 
   projects: Project[] = [];
 
-  constructor(private route: ActivatedRoute, private projectService: ProjectService, private messageService: MessageService, private location: Location) { }
+  projectsData: any = [];
+
+  constructor(private route: ActivatedRoute, private projectService: ProjectService, private messageService: MessageService, private location: Location, private apiService: ApiServiceService) { }
 
   ngOnInit(): void {
-    this.getProjects();
+    //this.getProjects();
+    this.apiService.getProjects().subscribe ( 
+      ( data: any) => { this.projectsData = data; }
+    );
     
   }
   OnSelect(project: Project){

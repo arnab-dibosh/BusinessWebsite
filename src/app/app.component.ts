@@ -12,8 +12,5 @@ export class AppComponent {
 
   constructor(private titleService:Title, private user: InternsService ){
     this.titleService.setTitle("Intern Management");
-    this.user.getData().subscribe((data: any) => {
-      console.warn(data)
-    })
   }
 }

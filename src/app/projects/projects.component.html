@@ -1,6 +1,6 @@
 <h2>Our Projects</h2>
 <ul class = "projects">
-    <li *ngFor ="let project of projects">
+    <li *ngFor ="let project of projectsData">
         <input *ngIf = 'buttonVisible()' type = "checkbox" name="{{project.name}}" [(ngModel)]="project.is_selected">
         <a routerLink = "/project-detail/{{project.id}}">
             <span class = "badge"> {{project.id}}</span> {{project.name}}

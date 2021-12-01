@@ -11,7 +11,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { ProjectDetailComponent } from './project-detail/project-detail.component';
 
-import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
