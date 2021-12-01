@@ -29,7 +29,9 @@ export class HeroesComponent implements OnInit {
       data => 
       {
         this.internsData = data;
-        console.log(this.internsData[0]);
+        //console.log(this.internsData[0]);
+        //console.log(typeof(this.internsData));
+        //console.log(typeof(this.internsData[0]));
       }
     );
   }
