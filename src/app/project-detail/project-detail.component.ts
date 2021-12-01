@@ -3,6 +3,7 @@ import { Project } from '../project';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { ProjectService } from '../project.service'
+import { ApiServiceService } from '../api-service.service';
 
 @Component({
   selector: 'app-project-detail',
@@ -12,10 +13,12 @@ import { ProjectService } from '../project.service'
 export class ProjectDetailComponent implements OnInit {
 
   @Input() project?: Project;
-  constructor(private route: ActivatedRoute, private projectService: ProjectService, private location: Location) { }
+  constructor(private route: ActivatedRoute, private projectService: ProjectService, private location: Location, private apiService: ApiServiceService) { }
 
   ngOnInit(): void {
-    this.getProject();
+    //this.getProject();
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.apiService.getProject(id).subscribe((project => this.project = project));
   }
 
   getProject(): void {
