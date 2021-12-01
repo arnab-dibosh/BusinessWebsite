@@ -72,7 +72,6 @@ export class ProjectsComponent implements OnInit {
       if(this.projectsData[i].is_selected)
       {
         p_id = this.projectsData[i].id;
-        console.log(p_id);
         this.apiService.assignProject(i_id, p_id).subscribe();
       }
     }
