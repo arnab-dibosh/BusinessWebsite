@@ -13,8 +13,8 @@ export class ApiServiceService
 
   constructor(private http : HttpClient) { }
   
-  internUrl = "https://localhost:64553/api/Interns";
-  projectUrl = "https://localhost:64553/api/Projects";
+  internUrl = "http://localhost:64553/api/Interns";
+  projectUrl = "http://localhost:64553/api/Projects";
   internProjectUrl = "http://localhost:64553/api/intern_project";
 
   getInterns()
