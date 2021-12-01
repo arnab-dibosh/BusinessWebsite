@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from "rxjs";
 import { Hero } from './hero';
 import { Project } from './project';
+import { Intern_Project} from './intern_project';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,9 @@ export class ApiServiceService
 
   constructor(private http : HttpClient) { }
   
-  internUrl = "https://localhost:44346/api/Interns";
-  projectUrl = "https://localhost:44346/api/Projects";
+  internUrl = "https://localhost:64553/api/Interns";
+  projectUrl = "https://localhost:64553/api/Projects";
+  internProjectUrl = "http://localhost:64553/api/intern_project";
 
   getInterns()
   {
