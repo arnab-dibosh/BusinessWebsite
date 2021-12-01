@@ -17,13 +17,13 @@ export class ApiServiceService
 
   getInterns()
   {
-    let url = "http://localhost:64553/api/Interns";
+    let url = this.internUrl;
     let data = this.http.get(url);
     return data;
   }
   getProjects()
   {
-    let url = "http://localhost:64553/api/Projects";
+    let url = this.projectUrl;
     let data = this.http.get(url);
     return data;
   }
