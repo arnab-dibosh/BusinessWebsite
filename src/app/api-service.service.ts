@@ -13,9 +13,9 @@ export class ApiServiceService
 
   constructor(private http : HttpClient) { }
   
-  internUrl = "https://localhost:64553/api/Interns";
-  projectUrl = "https://localhost:64553/api/Projects";
-  internProjectUrl = "http://localhost:64553/api/intern_project";
+  internUrl = "https://localhost:44346/api/Interns";
+  projectUrl = "https://localhost:44346/api/Projects";
+  internProjectUrl = "https://localhost:44346/api/intern_project";
 
   getInterns()
   {
@@ -38,7 +38,17 @@ export class ApiServiceService
     return this.http.get<Project>(url);
   }
 
-  
+  assignProject(i_id: number, p_id: number)
+  {
+    const url = `${this.internProjectUrl}`;
+    let httpOptions = 
+    {
+      headers : new HttpHeaders({'Content-Type': 'application/json'})
+    };
+
+    this.http.post(url, { intern_id : i_id, project_id: p_id } as Intern_Project , httpOptions);
+  }
+
 }
 
 
