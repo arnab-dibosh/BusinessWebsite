@@ -18,7 +18,7 @@ export class ProjectDetailComponent implements OnInit {
   ngOnInit(): void {
     //this.getProject();
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.apiService.getProject(id).subscribe((project => this.project = project));
+    this.apiService.getProject(id).subscribe(((project: Project | undefined) => this.project = project));
   }
 
   getProject(): void {
