@@ -12,8 +12,8 @@ export class ApiServiceService
 
   constructor(private http : HttpClient) { }
   
-  internUrl = "http://localhost:64553/api/Interns";
-  projectUrl = "http://localhost:64553/api/Projects";
+  internUrl = "https://localhost:44346/api/Interns";
+  projectUrl = "https://localhost:44346/api/Projects";
 
   getInterns()
   {
