@@ -42,7 +42,7 @@ export class HeroesComponent implements OnInit {
     this.heroService.getHeroes().subscribe((heroes: Hero[]) => this.heroes = heroes);
   }
   delete(hero: Hero): void {
-    this.heroes = this.heroes.filter(h => h! == hero);
+    this.internsData = this.internsData.filter((h: any) => h! == hero);
     this.apiService.deleteHero(hero.id).subscribe();
   }
 }
