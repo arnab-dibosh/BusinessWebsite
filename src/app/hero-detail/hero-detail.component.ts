@@ -63,15 +63,16 @@ export class HeroDetailComponent implements OnInit {
       if(intern_id === this.mappingData[i].intern_ID)
       {
         let projectID = this.mappingData[i].project_ID;
-        console.log('project id is ' + projectID);
 
-        this.apiService.getProject(projectID).subscribe(
-          (data: Project | undefined) => { this.currentProject = data; }
-        );
-
-        console.log(this.currentProject.name);
-
-        this.projectList.push(this.currentProject.name);  
+        for(let p = 0;p<this.projectsData.length;++p)
+        {
+          if(projectID === this.projectsData[p].id)
+          {
+            console.log(this.projectsData[p].name);
+            this.projectList.push(this.projectsData[p].name);
+          }
+          
+        }
       }
     }
     console.log(this.projectList);

@@ -14,9 +14,9 @@ export class ApiServiceService
   constructor(private http : HttpClient) { }
   
   httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), mode: 'no-cors', method:'*'}
-  internUrl = "http://localhost:64553/api/Interns";
-  projectUrl = "http://localhost:64553/api/Projects";
-  internProjectUrl = "http://localhost:64553/api/intern_project";
+  internUrl = "https://localhost:44346/api/Interns";
+  projectUrl = "https://localhost:44346/api/Projects";
+  internProjectUrl = "https://localhost:44346/api/intern_project";
 
   getInterns()
   {
