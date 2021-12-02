@@ -39,22 +39,42 @@ export class ProjectsComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
-  save(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    let index = HEROES.findIndex(x => x.id === id);
-    for(let i=0; i<this.projects.length; ++i) {
-      let project_name = this.projects[i].name;
-      let selected = this.projects[i].is_selected;
-      let exist = this.exists(project_name, index);
+  // save(): void {
+  //   const id = Number(this.route.snapshot.paramMap.get('id'));
+  //   let index = HEROES.findIndex(x => x.id === id);
+  //   for(let i=0; i<this.projects.length; ++i) {
+  //     let project_name = this.projects[i].name;
+  //     let selected = this.projects[i].is_selected;
+  //     let exist = this.exists(project_name, index);
 
 
-      if(selected && exist===false)
+  //     if(selected && exist===false)
+  //     {
+  //       HEROES[index].projectList.push(project_name);
+  //     }
+  //     this.projects[i].is_selected = false;
+  //   }
+
+  //   this.goBack();
+    
+  // }
+
+  save(): void
+  {
+    this.apiService.getProjects().subscribe ( 
+      ( data: any) => { this.projectsData = data; }
+    );
+    const i_id = Number(this.route.snapshot.paramMap.get('id')); 
+    let p_id = 10;
+
+    for(let i=0; i<this.projectsData.length; ++i)
+    {
+      if(this.projectsData[i].is_selected)
       {
-        HEROES[index].projectList.push(project_name);
+        p_id = this.projectsData[i].id;
+        this.apiService.assignProject(i_id, p_id).subscribe();
       }
-      this.projects[i].is_selected = false;
     }
-
     this.goBack();
     
   }

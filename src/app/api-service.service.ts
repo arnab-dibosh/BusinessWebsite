@@ -13,9 +13,15 @@ export class ApiServiceService
 
   constructor(private http : HttpClient) { }
   
+<<<<<<< HEAD
   internUrl = "http://localhost:64553/api/Interns";
   projectUrl = "http://localhost:64553/api/Projects";
   internProjectUrl = "http://localhost:64553/api/intern_project";
+=======
+  internUrl = "https://localhost:44346/api/Interns";
+  projectUrl = "https://localhost:44346/api/Projects";
+  internProjectUrl = "https://localhost:44346/api/intern_project";
+>>>>>>> 87c8046a3b110407e56e52157e44dadb6f56959c
 
   getInterns()
   {
@@ -29,6 +35,8 @@ export class ApiServiceService
     let data = this.http.get(url);
     return data;
   }
+
+
   getIntern(id: number): Observable<Hero>{
     const url = `${this.internUrl}/${id}`;
     return this.http.get<Hero>(url);
@@ -37,6 +45,18 @@ export class ApiServiceService
     const url = `${this.projectUrl}/${id}`;
     return this.http.get<Project>(url);
   }
+
+  assignProject(i_id: number, p_id: number) : Observable<Intern_Project>
+  {
+    const url = `${this.internProjectUrl}`;
+    let httpOptions = 
+    {
+      headers : new HttpHeaders({'Content-Type': 'application/json'})
+    };
+
+    return this.http.post<Intern_Project>(url, { intern_id : i_id, project_id: p_id } as Intern_Project , httpOptions);
+  }
+
 }
 
 
