@@ -1,14 +1,15 @@
-<div *ngIf = "intern">
-    <h2>{{intern.name | uppercase}} Details</h2>
-    <div class = "details"><span>Intern Id: </span>{{intern.id}}</div>
-    <div class = "details"><span>Intern Name: </span>{{intern.name}}</div>
-    <div class = "details"><span>Assigned Projects: </span>{{projectList}}</div>
-    <div><button routerLink = "/projects/{{intern.id}}">Assign Project</button></div>
+<div *ngIf="canOne && canTwo">
+    <div *ngIf = "intern">
+        <h2>{{intern.name | uppercase}} Details</h2>
+        <div class = "details"><span>Intern Id: </span>{{intern.id}}</div>
+        <div class = "details"><span>Intern Name: </span>{{intern.name}}</div>
+        <div class = "details"><span>Assigned Projects: </span>{{projectList}}</div>
+        <div><button routerLink = "/projects/{{intern.id}}">Assign Project</button></div>
+    </div>
+    
+    <div><button>Delete</button></div>
+    
+    <!-- <div><button>Delete</button></div> -->
+    <div><button (click)="goBack()">Go Back</button></div>
+
 </div>
-
-<!-- this button is to test getAssignedProjects method -->
-<!-- <div><button (click)="getAssignedProjects()" >TEST_BUTTON</button></div> -->
-<div><button>Delete</button></div>
-
-<!-- <div><button>Delete</button></div> -->
-<div><button (click)="goBack()">Go Back</button></div>

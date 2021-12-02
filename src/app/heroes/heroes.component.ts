@@ -3,6 +3,7 @@ import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
 import { MessageService } from '../message.service';
 import { ApiServiceService } from '../api-service.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-heroes',
@@ -19,10 +20,10 @@ export class HeroesComponent implements OnInit {
 
   constructor(private heroService: HeroService, 
               private messageService: MessageService,
-              private apiService : ApiServiceService) { }
+              private apiService : ApiServiceService,
+              private location: Location) { }
 
   ngOnInit(): void {
-    //this.getHeroes();
 
     this.apiService.getInterns().subscribe
     (
@@ -44,5 +45,12 @@ export class HeroesComponent implements OnInit {
   delete(hero: Hero): void {
     this.internsData = this.internsData.filter((h: any) => h! == hero);
     this.apiService.deleteHero(hero.id).subscribe();
+    
+  }
+  
+
+
+  goBack(): void {
+    this.location.back();
   }
 }
