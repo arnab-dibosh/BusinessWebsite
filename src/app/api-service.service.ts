@@ -13,15 +13,10 @@ export class ApiServiceService
 
   constructor(private http : HttpClient) { }
   
-<<<<<<< HEAD
+  httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), mode: 'no-cors', method:'*'}
   internUrl = "http://localhost:64553/api/Interns";
   projectUrl = "http://localhost:64553/api/Projects";
   internProjectUrl = "http://localhost:64553/api/intern_project";
-=======
-  internUrl = "https://localhost:44346/api/Interns";
-  projectUrl = "https://localhost:44346/api/Projects";
-  internProjectUrl = "https://localhost:44346/api/intern_project";
->>>>>>> 87c8046a3b110407e56e52157e44dadb6f56959c
 
   getInterns()
   {
@@ -55,6 +50,11 @@ export class ApiServiceService
     };
 
     return this.http.post<Intern_Project>(url, { intern_id : i_id, project_id: p_id } as Intern_Project , httpOptions);
+  }
+
+  deleteHero(id:number): Observable<Hero> {
+    const url = `${this.internUrl}/${id}`;
+    return this.http.delete<Hero>(url, this.httpOptions)
   }
 
 }
