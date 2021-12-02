@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Hero } from '../hero';
-import { Project } from '../project';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { HeroService } from '../hero.service';
@@ -26,19 +25,38 @@ export class HeroDetailComponent implements OnInit {
   mappingData : any = [];
   currentProject : any;
   projectList : any = [];
-
+  canOne: boolean = false;
+  canTwo: boolean = false;
 
   ngOnInit(): void {
     //this.getHero();
-
+    
     const id = Number(this.route.snapshot.paramMap.get('id'))
     this.apiService.getIntern(id).subscribe(
       (data: Hero | undefined) => { this.intern = data; }
-    );
+    )
 
-    this.getAssignedProjects();
+    /* getting project list from database through api */   
+    this.apiService.getProjects().subscribe ( 
+      ( data : any ) => { this.projectsData = data; this.canOne = true; } );
+
+    
+    /* getting intern project mapping data from database through api */
+    this.apiService.getInternProject().subscribe(
+      ( data : any ) => 
+      { 
+        this.mappingData = data; this.canTwo = true;
+        
+        if(this.canOne && this.canTwo) 
+        {
+          /**  getting assigned project for the intern */
+          this.getAssignedProjects();
+        }
+        else { console.log('this is hopeless'); }
+      });
     
   }
+
 
   getHero(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
@@ -46,17 +64,8 @@ export class HeroDetailComponent implements OnInit {
   }
 
   getAssignedProjects()
-  {
-    /* getting intern id from url */ 
-    const intern_id = Number(this.route.snapshot.paramMap.get('id'));
-
-    /* getting project list from database through api */
-    this.apiService.getProjects().subscribe ( 
-      ( data : any ) => { this.projectsData = data; } );
-
-    /* getting intern project mapping data from database through api */
-    this.apiService.getInternProject().subscribe(
-      ( data : any ) => { this.mappingData = data; });
+  { 
+    const intern_id = Number(this.route.snapshot.paramMap.get('id'));     
 
     for(let i=0;i<this.mappingData.length;++i)
     {
@@ -68,17 +77,13 @@ export class HeroDetailComponent implements OnInit {
         {
           if(projectID === this.projectsData[p].id)
           {
-            console.log(this.projectsData[p].name);
             this.projectList.push(this.projectsData[p].name);
           }
           
         }
       }
     }
-    console.log(this.projectList);
-    
   }
-
 
   goBack(): void {
     this.location.back();
