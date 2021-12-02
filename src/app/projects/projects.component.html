@@ -5,6 +5,7 @@
         <a routerLink = "/project-detail/{{project.id}}">
             <span class = "badge"> {{project.id}}</span> {{project.name}}
         </a>
+        <button class = "delete" title = "Delete project" (click) = "delete(project)">Delete</button>
     </li>
 </ul>
 <button *ngIf = 'buttonVisible()' (click) = 'save()'>Save</button>

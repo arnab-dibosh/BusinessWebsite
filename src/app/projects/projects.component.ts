@@ -95,6 +95,11 @@ export class ProjectsComponent implements OnInit {
     return false;
   } 
 
+  delete(project: Project): void {
+    this.projectsData = this.projectsData.filter((h: any) => h! == project);
+    this.apiService.deleteProject(project.id).subscribe();
+  }
+  
   buttonVisible() {
     let isButtonVisible = false;
     const id = Number(this.route.snapshot.paramMap.get('id'));

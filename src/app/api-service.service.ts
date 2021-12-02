@@ -13,7 +13,7 @@ export class ApiServiceService
 
   constructor(private http : HttpClient) { }
   
-  httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), mode: 'no-cors', method:'*'}
+  httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' })}
   internUrl = "http://localhost:64553/api/Interns";
   projectUrl = "http://localhost:64553/api/Projects";
   internProjectUrl = "http://localhost:64553/api/intern_project";
@@ -61,6 +61,10 @@ export class ApiServiceService
   deleteHero(id:number): Observable<Hero> {
     const url = `${this.internUrl}/${id}`;
     return this.http.delete<Hero>(url, this.httpOptions)
+  }
+  deleteProject(id:number): Observable<Project> {
+    const url = `${this.projectUrl}/${id}`;
+    return this.http.delete<Project>(url, this.httpOptions);
   }
 
 }
