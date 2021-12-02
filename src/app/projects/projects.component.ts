@@ -20,7 +20,11 @@ export class ProjectsComponent implements OnInit {
 
   projectsData: any = [];
 
-  constructor(private route: ActivatedRoute, private projectService: ProjectService, private messageService: MessageService, private location: Location, private apiService: ApiServiceService) { }
+  constructor(private route: ActivatedRoute, 
+              private projectService: ProjectService, 
+              private messageService: MessageService, 
+              private location: Location, 
+              private apiService: ApiServiceService) { }
 
   ngOnInit(): void {
     //this.getProjects();
@@ -36,6 +40,7 @@ export class ProjectsComponent implements OnInit {
   getProjects(): void{
     this.projectService.getProjects().subscribe((projects: Project[]) => this.projects = projects); 
   }
+
   goBack(): void {
     this.location.back();
   }
@@ -59,13 +64,15 @@ export class ProjectsComponent implements OnInit {
     
   // }
 
+
+  /*assigns projects to intern*/
   save(): void
   {
     this.apiService.getProjects().subscribe ( 
       ( data: any) => { this.projectsData = data; }
     );
     const i_id = Number(this.route.snapshot.paramMap.get('id')); 
-    let p_id = 10;
+    let p_id = 0;
 
     for(let i=0; i<this.projectsData.length; ++i)
     {
