@@ -23,11 +23,17 @@ export class ApiServiceService
     let data = this.http.get(url);
     return data;
   }
-  getProjects()
+
+  getProjects() : Observable<Project[]>
   {
     let url = this.projectUrl;
-    let data = this.http.get(url);
-    return data;
+    return this.http.get<Project[]>(url);
+  }
+
+  getInternProject() : Observable<Intern_Project[]>
+  {
+    let url = this.internProjectUrl;
+    return this.http.get<Intern_Project[]>(url);
   }
 
 
